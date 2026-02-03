@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Rosogulla ❤️</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px 20px;
+      border-radius: 22px;
+      text-align: center;
+      width: 90%;
+      max-width: 360px;
+      box-shadow: 0 25px 45px rgba(0,0,0,0.15);
+      animation: fadeIn 1.2s ease;
+    }
+
+    h1 {
+      font-size: 1.3rem;
+      color: #e63946;
+      margin-bottom: 25px;
+    }
+
+    .buttons {
+      position: relative;
+      height: 120px;
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      position: absolute;
+      transition: 0.3s ease;
+    }
+
+    #yesBtn {
+      background: #e63946;
+      color: #fff;
+      left: 18%;
+      bottom: 0;
+    }
+
+    #noBtn {
+      background: #adb5bd;
+      color: #333;
+      right: 18%;
+      bottom: 0;
+    }
+
+    .reveal img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid #e63946;
+      margin-bottom: 15px;
+      animation: pop 1s ease;
+    }
+
+    .reveal h2 {
+      color: #e63946;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .reveal p {
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    @keyframes pop {
+      from { opacity: 0; transform: scale(0.4); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" loop>
+    <source src="love.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="container" id="card">
+    <h1>
+      Roso ❤️ I love you so much.<br>
+      Do you want to marry me?
+    </h1>
+
+    <div class="buttons">
+      <button id="yesBtn">Yes 💍</button>
+      <button id="noBtn">No 😜</button>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const card = document.getElementById("card");
+    const music = document.getElementById("bgMusic");
+
+    // No button jumps
+    noBtn.addEventListener("click", () => {
+      const maxX = card.clientWidth - noBtn.clientWidth;
+      const maxY = card.clientHeight - noBtn.clientHeight;
+
+      noBtn.style.left = Math.random() * maxX + "px";
+      noBtn.style.top = Math.random() * maxY + "px";
+    });
+
+    // Yes button reveal + music
+    yesBtn.addEventListener("click", () => {
+      music.play();
+
+      card.innerHTML = `
+        <div class="reveal">
+          <img src="roso.jpeg" alt="My Rosogulla ❤️">
+          <h2>🎉 Happy Birthday 🎉</h2>
+          <p>to my Rosogulla ❤️<br>
+          You are my forever ♾️</p>
+        </div>
+      `;
+    });
+  </script>
+
+</body>
+</html>
